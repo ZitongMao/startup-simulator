@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="board" class="screen">
+        <div id="start">
+            <div id="start-title">
+                <h1>Startup<br />Simulator</h1>
+            </div>
+            <div class="image-square start-picture">
+                <img src="img/unicorn.png"/>
+            </div>
+            <div class="button">
+                <div class=button-top></div>
+                <div id="start-button" class="button-middle">
+                    <span class=button-middle-content>Start Game</span>
+                </div>
+                <div class=button-bottom></div>
+            </div>
+            <div class="button">
+                <div class=button-top></div>
+                <div id="start-leader" class="button-middle">
+                    <span class=button-middle-content>Leaderboard</span>
+                </div>
+                <div class=button-bottom></div>
+            </div>
+            <div class="button">
+                <div class=button-top></div>
+                <div id="start-about" class="button-middle">
+                    <span class=button-middle-content>About</span>
+                </div>
+                <div class=button-bottom></div>
+            </div>
+            <div class="button">
+                <div class=button-top></div>
+                <div id="start-share" class="button-middle">
+                    <span class=button-middle-content>Share!</span>
+                </div>
+                <div class=button-bottom></div>
+            </div>
+        </div>
+
+        <div id="introduction" style="display: none">
+            <h1>Introduction</h1>
+            <p>
+                Some rules, goals, and background stories
+            </p>
+            <p>
+                I will add them later
+            </p>
+            <div class="button">
+                <div class=button-top></div>
+                <div id="introduction-button" class="button-middle">
+                    <span class=button-middle-content>Let's start!</span>
+                </div>
+                <div class=button-bottom></div>
+            </div>
+        </div>
+
+        <div id="game" style="display: none">
+            <div class="game-stats">
+
+                <div class="team">
+                    <div>
+                        <span>
+                            Founder:
+                        </span>
+                        <span class="founder-list">Zitong Mao</span>
+                    </div>
+                    <div>
+                        <div class="button">
+                            <div class=button-top></div>
+                            <div id="employees" class="button-employee button-middle">
+                                <span class=button-middle-content>All employees</span>
+                            </div>
+                            <div class=button-bottom></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="money">
+                    <div>
+                        <span>
+                            Valuation:
+                        </span>
+                        <span>
+                            $ <span id="valuation-value">213</span>
+                            <span id="valuation-unit">M</span>
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            Cash:
+                        </span>
+                        <span>
+                            $ <span id="cash-value">35</span>
+                            <span id="cash-unit">M</span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class=calendar>
+                    <div class="calendar-week hud-label">
+                        Week <span id="calendar-week-number">2</span>
+                    </div>
+                    <div class="morale">
+                        Morale: <span id="morale-value">+4</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="game-events">
+                <div id="qImg"></div>
+                <div id="question"></div>
+
+            </div>
+
+            <div class="buttons">
+                <div class="button">
+                    <div class=button-top></div>
+                    <div id="A" class="button-middle" onclick="renderResult('A')">
+                        <span class=button-middle-content >Choice A</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div id="B" class="button-middle" onclick="renderResult('B')">
+                        <span class=button-middle-content>Choice B</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div id="C" class="button-middle" onclick="renderResult('C')">
+                        <span class=button-middle-content>Choice C</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+            </div>
+
+            <div id="result" class="modal" style="display: none">
+                <div id="result-description" class="modal-content">
+                  <p>This is what happened.</p>
+              </div>
+
+              <div class="buttons-small button">
+                  <div class=button-top></div>
+                  <div id="modal-button" class="button-middle">
+                      <span class=button-middle-content>Continue</span>
+                  </div>
+                  <div class=button-bottom></div>
+              </div>
+
+          </div>
+
+
+
+            <!-- <div id="question"></div>
+            <div id="qImg"></div>
+            <div id="choices">
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+            </div>
+            <div id="timer">
+                <div id="counter"></div>
+                <div id="btimeGauge"></div>
+                <div id="timeGauge"></div>
+            </div>
+            <div id="progress"></div> -->
+        </div>
+
+        <div id="gameover" style="display: none">
+            <h1>Game Over</h1>
+            <p>
+                Game Over.
+            </p>
+            <p>
+                Your score is <span id="score">100</span>
+            </p>
+
+        </div>
+
+        <div id="scoreContainer" style="display: none"></div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
