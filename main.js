@@ -299,7 +299,7 @@ let TIMER;
 
 const VALUATION_DEFAULT = 100;
 const CASH_DEFAULT = 10;
-const MORALE_DEFAULT = 0;
+const MORALE_DEFAULT = 5;
 const TIME_DEFAULT = 1;
 
 let valuation = VALUATION_DEFAULT;
@@ -330,21 +330,31 @@ function changeTextColor(str){
     return str
 }
 
+// color stats board
+function changeStatsColor(num){
+    if (num > 0){
+        return "<font color='green'>" + num + "</font>";
+    } else if (num < 0) {
+        return "<font color='red'>" + num + "</font>";
+    } else {
+        return "<font color='orange'>" + num + "</font>";
+    }
+}
 
 // render starting stats
 
 function renderDefaultStats(){
     valuationValue.innerHTML = VALUATION_DEFAULT;
-    cashValue.innerHTML = CASH_DEFAULT;
+    cashValue.innerHTML = changeStatsColor(CASH_DEFAULT);
     timeValue.innerHTML = TIME_DEFAULT;
-    moraleValue.innerHTML = MORALE_DEFAULT;
+    moraleValue.innerHTML = changeStatsColor(MORALE_DEFAULT);
 }
 
 function renderStats(){
     valuationValue.innerHTML = valuation;
-    cashValue.innerHTML = cash;
+    cashValue.innerHTML = changeStatsColor(cash);
     timeValue.innerHTML = time;
-    moraleValue.innerHTML = morale;
+    moraleValue.innerHTML = changeStatsColor(morale);
 }
 
 
