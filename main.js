@@ -7,6 +7,7 @@ const qImg = document.getElementById("qImg");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
+const hidden = document.getElementById("hidden");
 
 const valuationValue = document.getElementById("valuation-value");
 const cashValue = document.getElementById("cash-value");
@@ -32,7 +33,7 @@ let questions = [
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
         choiceB : "No way! We are better on our own.",
-        choiceC : "(Unlocked: Negotiation) We deserve more.",
+        choiceC : "(negotiation) We deserve more.",
 
         // odds for the result to be good
         oddsA : 0.2,
@@ -307,7 +308,7 @@ let cash = CASH_DEFAULT;
 let morale = MORALE_DEFAULT;
 let time = TIME_DEFAULT;
 
-let ability_list = [];
+let skill_list = [];
 let employee_list = [];
 
 
@@ -363,18 +364,30 @@ function renderStats(){
 
 // render a question
 function renderQuestion(){
+    hidden.style.display = "none";
     let q = questions[runningQuestion];
 
     question.innerHTML = "<p>"+ q.question +"</p>";
     qImg.innerHTML = "<img src="+ q.imgSrc +">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
+    choiceC.innerHTML = changeTextColor("@"+q.choiceC+"@");
+    if (choiceC.innerText[0] === "(") {
+        let regExp = /\(([^)]+)\)/;
+        let matches = regExp.exec(choiceC.innerText);
+
+        if (skill_list.includes(matches[1])) {
+            hidden.style.display = "block";
+        } else {
+            hidden.style.display = "none";
+        }
+
+    }
 }
 
 startButton.addEventListener("click",startIntroduction);
 
-introductionButton.addEventListener("click",startAbility);
+introductionButton.addEventListener("click",startSkill);
 
 modalContinueButton.addEventListener("click",continueGame);
 
@@ -441,20 +454,20 @@ function startIntroduction(){
     introduction.style.display = "block";
 }
 
-//start ability
-function startAbility(){
+//start skill
+function startSkill(){
     introduction.style.display = "none";
-    ability.style.display = "block";
+    skill.style.display = "block";
 }
 
 // start game
 function startGame(choose){
-
-    ability.style.display = "none";
+    skill_list.push(choose);
+    skill.style.display = "none";
     renderQuestion();
     game.style.display = "block";
     renderDefaultStats();
-    ability_list.push(choose);
+
 
     // renderProgress();
     // renderCounter();
