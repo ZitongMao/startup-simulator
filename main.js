@@ -307,6 +307,7 @@ let cash = CASH_DEFAULT;
 let morale = MORALE_DEFAULT;
 let time = TIME_DEFAULT;
 
+let ability_list = [];
 
 // random good or bad result
 
@@ -371,7 +372,7 @@ function renderQuestion(){
 
 startButton.addEventListener("click",startIntroduction);
 
-introductionButton.addEventListener("click",startGame);
+introductionButton.addEventListener("click",startAbility);
 
 modalContinueButton.addEventListener("click",continueGame);
 
@@ -438,12 +439,20 @@ function startIntroduction(){
     introduction.style.display = "block";
 }
 
-// start game
-function startGame(){
+//start ability
+function startAbility(){
     introduction.style.display = "none";
+    ability.style.display = "block";
+}
+
+// start game
+function startGame(choose){
+
+    ability.style.display = "none";
     renderQuestion();
     game.style.display = "block";
     renderDefaultStats();
+    ability_list.push(choose);
 
     // renderProgress();
     // renderCounter();

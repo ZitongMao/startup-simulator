@@ -48,10 +48,19 @@
         <div id="introduction" style="display: none">
             <h1>Introduction</h1>
             <p>
-                Some rules, goals, and background stories
+                Welcome!
             </p>
             <p>
-                I will add them later
+                You are the founder of a tech startup in San Franciso.
+            </p>
+            <p>
+                Your company just received a <span style="color: green">$10M</span> investment from angel investors, making the valuation <span style="color: green">$100M</span>.
+            </p>
+            <p>
+                You plan to do an IPO within <br /><span style="color: red">24 Weeks</span>.
+            </p>
+            <p>
+                Survive and make your valuation as high as possible!
             </p>
             <div class="button">
                 <div class=button-top></div>
@@ -62,25 +71,73 @@
             </div>
         </div>
 
+        <div id="ability" style="display: none">
+            <h1>Ability</h1>
+            <p>
+                What are you good at?
+            </p>
+            <div class="buttons">
+                <div class="button">
+                    <div class=button-top></div>
+                    <div class="button-middle" onclick="startGame('negotiation')">
+                        <span class=button-middle-content >Negotiation</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div class="button-middle" onclick="startGame('lucky')">
+                        <span class=button-middle-content>Lucky</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div class="button-middle" onclick="startGame('language')">
+                        <span class=button-middle-content>Foreign Language</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div class="button-middle" onclick="startGame('marketing')">
+                        <span class=button-middle-content>Marketing</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div class="button-middle" onclick="startGame('coding')">
+                        <span class=button-middle-content>Coding</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div class="button-middle" onclick="startGame('finance')">
+                        <span class=button-middle-content>Finance</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+            </div>
+        </div>
+
         <div id="game" style="display: none">
             <div class="game-stats">
 
                 <div class="team">
-                    <div>
-                        <span>
-                            Founder:
-                        </span>
-                        <span class="founder-list">Zitong Mao</span>
-                    </div>
-                    <div>
                         <div class="button">
                             <div class=button-top></div>
                             <div id="employees" class="button-employee button-middle">
-                                <span class=button-middle-content>All employees</span>
+                                <span class=button-middle-content>Employee: <span id="employee-number">0</span></span>
                             </div>
                             <div class=button-bottom></div>
                         </div>
-                    </div>
                 </div>
 
                 <div class="money">
