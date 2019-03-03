@@ -91,7 +91,7 @@ let questions = [
         dataC_bad: [-20, 0, -1],
     },
     {
-        id : 1,
+        id : 3,
         question : "Facehook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
@@ -123,7 +123,7 @@ let questions = [
         dataC_bad: [-20, 0, -1],
 
     },{
-        id : 2,
+        id : 4,
         question : "SoftTank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
@@ -155,7 +155,7 @@ let questions = [
         dataC_bad: [-20, 0, -1],
     },
     {
-        id : 1,
+        id : 5,
         question : "Facehook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
@@ -187,7 +187,7 @@ let questions = [
         dataC_bad: [-20, 0, -1],
 
     },{
-        id : 2,
+        id : 6,
         question : "SoftTank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
@@ -219,7 +219,7 @@ let questions = [
         dataC_bad: [-20, 0, -1],
     },
     {
-        id : 1,
+        id : 7,
         question : "Facehook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
@@ -251,7 +251,7 @@ let questions = [
         dataC_bad: [-20, 0, -1],
 
     },{
-        id : 2,
+        id : 8,
         question : "SoftTank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
@@ -308,6 +308,8 @@ let morale = MORALE_DEFAULT;
 let time = TIME_DEFAULT;
 
 let ability_list = [];
+let employee_list = [];
+
 
 // random good or bad result
 
@@ -466,6 +468,14 @@ function continueGame(){
 
     if (resultDescription.innerHTML.slice(0,9) == "GAME OVER"){
         gameOver();
+    } else if (runningQuestion == 6){
+        gameOver('time');
+    } else if (valuation <= 0) {
+        gameOver('worthless');
+    } else if (cash+valuation <= 0) {
+        gameOver('bankrupt');
+    } else if (morale < -20) {
+        gameOver('quit')
     } else {
         runningQuestion++;
         renderQuestion();
@@ -475,10 +485,21 @@ function continueGame(){
 
 }
 
-function gameOver(){
+function gameOver(temp){
     game.style.display = "none";
     gameover.style.display = "block";
-    score.innerHTML = valuation;
+    score.innerHTML = changeStatsColor(valuation);
+    if (temp == 'time') {
+        reason.innerHTML = "Congrats on surviving 24 weeks!"
+    } else if (temp == 'worthless') {
+        reason.innerHTML = "Your startup is worthless."
+    } else if (temp == 'bankrupt') {
+        reason.innerHTML = "You run out of cash and bankrupted."
+    } else if (temp == 'quit') {
+        reason.innerHTML = "No one wants to work for you anymore."
+    } else {
+        reason.innerHTML = "Sh*t happens."
+    }
 }
 
 // render progress
