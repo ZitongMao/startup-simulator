@@ -58,7 +58,7 @@ h1{
 
 .buttons {
     position: absolute;
-    bottom: 20px;
+    bottom: 20vh;
     width: calc(100% - 96px);
     left: 48px;
 }
