@@ -507,7 +507,7 @@ function gameOver(temp){
     } else if (temp == 'worthless') {
         reason.innerHTML = "Your startup is worthless."
     } else if (temp == 'bankrupt') {
-        reason.innerHTML = "You run out of cash and bankrupted."
+        reason.innerHTML = "You ran out of cash and bankrupted."
     } else if (temp == 'quit') {
         reason.innerHTML = "No one wants to work for you anymore."
     } else {
