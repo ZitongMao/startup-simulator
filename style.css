@@ -22,6 +22,13 @@ h1{
     padding: 15px 15px;
 }
 
+.buttons {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 96px);
+    left: 48px;
+}
+
 @media screen and (max-width: 700px) {
     #board{
         margin: auto;
@@ -31,6 +38,12 @@ h1{
         box-shadow: 0px 0px 0px 0px;
         position: fixed;
         padding: 15px;
+    }
+    .buttons {
+        position: absolute;
+        bottom: 22vh;
+        width: calc(100% - 96px);
+        left: 48px;
     }
 }
 
@@ -56,12 +69,7 @@ h1{
     margin-bottom: 15px;
 }
 
-.buttons {
-    position: absolute;
-    bottom: 20vh;
-    width: calc(100% - 96px);
-    left: 48px;
-}
+
 
 .buttons-small {
     position:relative;

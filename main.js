@@ -1,30 +1,3 @@
-// select all elements
-const startButton = document.getElementById("start-button");
-const introductionButton = document.getElementById("introduction-button");
-const game = document.getElementById("game");
-const question = document.getElementById("question");
-const qImg = document.getElementById("qImg");
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const hidden = document.getElementById("hidden");
-
-const valuationValue = document.getElementById("valuation-value");
-const cashValue = document.getElementById("cash-value");
-const timeValue = document.getElementById("calendar-week-number");
-const moraleValue = document.getElementById("morale-value");
-
-const score = document.getElementById("score");
-
-
-const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("scoreContainer");
-
-const resultDescription = document.getElementById("result-description");
-const modalContinueButton = document.getElementById("modal-button");
-
 // create our questions
 let questions = [
     {
@@ -285,6 +258,38 @@ let questions = [
     },
 ];
 
+
+// select all elements
+const startButton = document.getElementById("start-button");
+const introductionButton = document.getElementById("introduction-button");
+const game = document.getElementById("game");
+const question = document.getElementById("question");
+const qImg = document.getElementById("qImg");
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+const hidden = document.getElementById("hidden");
+
+const valuationValue = document.getElementById("valuation-value");
+const cashValue = document.getElementById("cash-value");
+const timeValue = document.getElementById("calendar-week-number");
+const moraleValue = document.getElementById("morale-value");
+
+const score = document.getElementById("score");
+
+
+const counter = document.getElementById("counter");
+const timeGauge = document.getElementById("timeGauge");
+const progress = document.getElementById("progress");
+const scoreDiv = document.getElementById("scoreContainer");
+
+const resultDescription = document.getElementById("result-description");
+const modalContinueButton = document.getElementById("modal-button");
+const employeeContinueButton = document.getElementById("employee-button");
+const seeEmployeesButton = document.getElementById("employees");
+
+
+
 // create some variables
 
 const lastQuestion = questions.length - 1;
@@ -309,7 +314,7 @@ let morale = MORALE_DEFAULT;
 let time = TIME_DEFAULT;
 
 let skill_list = [];
-let employee_list = [];
+let employee_list = ['Founder'];
 
 
 // random good or bad result
@@ -325,12 +330,14 @@ function randomResult(odds){
     }
 }
 
-// color data change, positive to green, negative to red
+// color data change, positive to green, negative to red, speical to blue
 function changeTextColor(str){
     // negative
     str=str.replace(/(%)(.*)(%)/g,"<font color='red'>$2</font>");
     // positive
     str=str.replace(/(@)(.*)(@)/g,"<font color='green'>$2</font>");
+    // special
+    str=str.replace(/(&)(.*)(&)/g,"<font color='blue'>$2</font>");
     return str
 }
 
@@ -352,6 +359,7 @@ function renderDefaultStats(){
     cashValue.innerHTML = changeStatsColor(CASH_DEFAULT);
     timeValue.innerHTML = TIME_DEFAULT;
     moraleValue.innerHTML = changeStatsColor(MORALE_DEFAULT);
+    employeenumber.innerHTML = employee_list.length;
 }
 
 function renderStats(){
@@ -359,6 +367,7 @@ function renderStats(){
     cashValue.innerHTML = changeStatsColor(cash);
     timeValue.innerHTML = time;
     moraleValue.innerHTML = changeStatsColor(morale);
+    employeenumber.innerHTML = employee_list.length;
 }
 
 
@@ -371,7 +380,7 @@ function renderQuestion(){
     qImg.innerHTML = "<img src="+ q.imgSrc +">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = changeTextColor("@"+q.choiceC+"@");
+    choiceC.innerHTML = changeTextColor("&"+q.choiceC+"&");
     if (choiceC.innerText[0] === "(") {
         let regExp = /\(([^)]+)\)/;
         let matches = regExp.exec(choiceC.innerText);
@@ -390,6 +399,10 @@ startButton.addEventListener("click",startIntroduction);
 introductionButton.addEventListener("click",startSkill);
 
 modalContinueButton.addEventListener("click",continueGame);
+
+employeeContinueButton.addEventListener("click",backToGame);
+
+seeEmployeesButton.addEventListener("click",renderEmployee);
 
 //render a result
 function renderResult(choice){
@@ -494,9 +507,13 @@ function continueGame(){
         renderQuestion();
     }
 
+}
 
+function backToGame(){
+    employeelist.style.display = "none";
 
 }
+
 
 function gameOver(temp){
     game.style.display = "none";
@@ -513,6 +530,16 @@ function gameOver(temp){
     } else {
         reason.innerHTML = "Sh*t happens."
     }
+}
+
+function renderEmployee(){
+    employeelist.style.display = "block";
+    count = employee_list.length;
+    var content = "";
+    for(i = 0; i < count; i++) {
+        content = content + "<br />" + employee_list[i] + ": " + skill_list[i]
+    }
+    employeeoverview.innerHTML = content;
 }
 
 // render progress
