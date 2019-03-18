@@ -66,7 +66,7 @@ let questions = [
     },
     {
         id : 3,
-        question : "Facehook wants to acquire your core product at 30M.",
+        question : "3Facehook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
         choiceB : "No way! We are better on our own.",
@@ -98,7 +98,7 @@ let questions = [
 
     },{
         id : 4,
-        question : "SoftTank wants to invest 500M to acquire most of your shares.",
+        question : "4SoftTank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
         choiceB : "No, I need to keep my ownership.",
@@ -130,7 +130,7 @@ let questions = [
     },
     {
         id : 5,
-        question : "Facehook wants to acquire your core product at 30M.",
+        question : "5Facehook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
         choiceB : "No way! We are better on our own.",
@@ -162,7 +162,7 @@ let questions = [
 
     },{
         id : 6,
-        question : "SoftTank wants to invest 500M to acquire most of your shares.",
+        question : "6SoftTank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
         choiceB : "No, I need to keep my ownership.",
@@ -194,7 +194,7 @@ let questions = [
     },
     {
         id : 7,
-        question : "Facehook wants to acquire your core product at 30M.",
+        question : "7Facehook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facehook!",
         choiceB : "No way! We are better on our own.",
@@ -226,7 +226,7 @@ let questions = [
 
     },{
         id : 8,
-        question : "SoftTank wants to invest 500M to acquire most of your shares.",
+        question : "8SoftTank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
         choiceB : "No, I need to keep my ownership.",
@@ -259,6 +259,59 @@ let questions = [
 ];
 
 
+//employees
+let resumes = [
+    {
+        name: "CTO Raymundo",
+        skill: ["coding", "lanaugage"],
+    },{
+        name: "CTO Zachery",
+        skill: "coding",
+    },{
+        name: "CTO Michael",
+        skill: "coding",
+    },{
+        name: "CMO Njeri",
+        skill: ["marketing", "lanaugage"],
+    },{
+        name: "CMO Christine",
+        skill: "marketing",
+    },{
+        name: "CMO Jake",
+        skill: "marketing",
+    },{
+        name: "CFO Zitong",
+        skill: ["finance", "lanaugage"],
+    },{
+        name: "CFO John",
+        skill: "finance",
+    },{
+        name: "CFO Grant",
+        skill: "finance",
+    },{
+        name: "COO Muhammad",
+        skill: ["negotiation", "lanaugage"],
+    },{
+        name: "COO Ben",
+        skill: "negotiation",
+    },{
+        name: "COO Katie",
+        skill: "negotiation",
+    },{
+        name: "Chief Data Scientist Darya",
+        skill: ["lucky", "lanaugage"],
+    },{
+        name: "Chief Data Scientist Austin",
+        skill: "lucky",
+    },{
+        name: "Chief Data Scientist Matt",
+        skill: "lucky",
+    }
+
+]
+
+
+
 // select all elements
 const startButton = document.getElementById("start-button");
 const introductionButton = document.getElementById("introduction-button");
@@ -284,7 +337,9 @@ const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
 const resultDescription = document.getElementById("result-description");
+const hiringResultDescription = document.getElementById("hiring-result-description");
 const modalContinueButton = document.getElementById("modal-button");
+const modalContinueButtonHiring = document.getElementById("hiring-modal-button");
 const employeeContinueButton = document.getElementById("employee-button");
 const seeEmployeesButton = document.getElementById("employees");
 
@@ -300,6 +355,11 @@ const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 
+let runningResumeA = 0;
+let runningResumeB = runningResumeA + 1;
+let runningResumeC = runningResumeB + 2;
+
+
 
 // game variables
 
@@ -313,8 +373,21 @@ let cash = CASH_DEFAULT;
 let morale = MORALE_DEFAULT;
 let time = TIME_DEFAULT;
 
+let popularity = 0;
+
 let skill_list = [];
 let employee_list = ['Founder'];
+
+// shuffle a given array
+function shuffle(l) {
+    for(var j, x, i = l.length; i; j = parseInt(Math.random() * i), x = l[--i], l[i] = l[j], l[j] = x);
+    return l;
+}
+
+let question_index = shuffle([...Array(questions.length).keys()]);
+let resume_index = shuffle([...Array(resumes.length).keys()]);
+console.log(question_index);
+console.log(resume_index);
 
 
 // random good or bad result
@@ -327,6 +400,14 @@ function randomResult(odds){
     } else {
         // bad result
         return false;
+    }
+}
+
+function randomResultLuck(odds){
+    if (skill_list.includes('lucky')){
+        randomResult(odds+0.1)
+    } else {
+        randomResult(odds)
     }
 }
 
@@ -373,8 +454,10 @@ function renderStats(){
 
 // render a question
 function renderQuestion(){
+    hiringbuttons.style.display = "none";
+    choicebuttons.style.display = "block";
     hidden.style.display = "none";
-    let q = questions[runningQuestion];
+    let q = questions[question_index[runningQuestion]];
 
     question.innerHTML = "<p>"+ q.question +"</p>";
     qImg.innerHTML = "<img src="+ q.imgSrc +">";
@@ -394,11 +477,30 @@ function renderQuestion(){
     }
 }
 
+function renderHiringQuestion() {
+    choicebuttons.style.display = "none";
+    hiringbuttons.style.display = "block";
+
+    let r_A = resumes[resume_index[runningResumeA]];
+    let r_B = resumes[resume_index[runningResumeB]];
+    let r_C = resumes[resume_index[runningResumeC]];
+
+    question.innerHTML = "<p> You got some resumes. Who do you want to hire? </p>";
+    qImg.innerHTML = "<img src=img/businessman.jpg>";
+    ah.innerHTML = r_A.name;
+    bh.innerHTML = r_B.name;
+    ch.innerHTML = r_C.name;
+
+}
+
 startButton.addEventListener("click",startIntroduction);
 
 introductionButton.addEventListener("click",startSkill);
 
 modalContinueButton.addEventListener("click",continueGame);
+
+modalContinueButtonHiring.addEventListener("click",continueGameHiring);
+
 
 employeeContinueButton.addEventListener("click",backToGame);
 
@@ -406,59 +508,85 @@ seeEmployeesButton.addEventListener("click",renderEmployee);
 
 //render a result
 function renderResult(choice){
-    let q = questions[runningQuestion];
+    let q = questions[question_index[runningQuestion]];
     if (choice === 'A') {
-        if (randomResult(q.oddsA)){
+        if (randomResultLuck(q.oddsA)){
             resultDescription.innerHTML = changeTextColor(q.resultA);
             valuation += q.dataA[0];
             cash += q.dataA[1];
             morale += q.dataA[2];
-            time++;
-            renderStats();
         } else {
             resultDescription.innerHTML = changeTextColor(q.resultA_bad);
             valuation += q.dataA_bad[0];
             cash += q.dataA_bad[1];
             morale += q.dataA_bad[2];
-            time++;
-            renderStats();
         }
 
     } else if (choice === 'B') {
-        if (randomResult(q.oddsB)){
+        if (randomResultLuck(q.oddsB)){
             resultDescription.innerHTML = changeTextColor(q.resultB);
             valuation += q.dataB[0];
             cash += q.dataB[1];
             morale += q.dataB[2];
-            time++;
-            renderStats();
         } else {
             resultDescription.innerHTML = changeTextColor(q.resultB_bad);
             valuation += q.dataB_bad[0];
             cash += q.dataB_bad[1];
             morale += q.dataB_bad[2];
-            time++;
-            renderStats();
         }
     } else if (choice === 'C') {
-        if (randomResult(q.oddsC)){
+        if (randomResultLuck(q.oddsC)){
             resultDescription.innerHTML = changeTextColor(q.resultC);
             valuation += q.dataC[0];
             cash += q.dataC[1];
             morale += q.dataC[2];
-            time++;
-            renderStats();
         } else {
             resultDescription.innerHTML = changeTextColor(q.resultC_bad);
             valuation += q.dataC_bad[0];
             cash += q.dataC_bad[1];
             morale += q.dataC_bad[2];
-            time++;
-            renderStats();
         }
     }
-
+    time++;
+    renderStats();
     result.style.display = "block";
+}
+
+function renderHiringResult(choice){
+    let r_A = resumes[resume_index[runningResumeA]];
+    let r_B = resumes[resume_index[runningResumeB]];
+    let r_C = resumes[resume_index[runningResumeC]];
+
+    if (choice === 'A') {
+        employee_list.push(r_A.name);
+        hiringResultDescription.innerHTML = r_A.name + " joined you!";
+
+        if (r_A.skill.length = 1){
+            skill_list.push(r_A.skill)
+        } else {
+            skill_list = skill_list.concat(r_A.skill)
+        }
+    } else if (choice === 'B') {
+        employee_list.push(r_B.name);
+        hiringResultDescription.innerHTML = r_B.name + " joined you!";
+
+        if (r_B.skill.length = 1){
+            skill_list.push(r_B.skill)
+        } else {
+            skill_list = skill_list.concat(r_B.skill)
+        }
+    }  else if (choice === 'C') {
+        employee_list.push(r_C.name);
+        hiringResultDescription.innerHTML = r_C.name + " joined you!";
+        if (r_C.skill.length = 1){
+            skill_list.push(r_C.skill)
+        } else {
+            skill_list = skill_list.concat(r_C.skill)
+        }
+    }
+    renderStats();
+
+    hiringresult.style.display = "block";
 }
 
 // start introduction
@@ -490,11 +618,13 @@ function startGame(choose){
 function continueGame(){
     result.style.display = "none";
 
+    popularity = 0.1 + valuation / 1000 * 0.2;
+
     // next question
 
     if (resultDescription.innerHTML.slice(0,9) == "GAME OVER"){
         gameOver();
-    } else if (runningQuestion == 6){
+    } else if (runningQuestion == 10){
         gameOver('time');
     } else if (valuation <= 0) {
         gameOver('worthless');
@@ -502,11 +632,26 @@ function continueGame(){
         gameOver('bankrupt');
     } else if (morale < -20) {
         gameOver('quit')
+    } else if (randomResult(popularity)){
+        //hiring time
+        console.log("hiring");
+        renderHiringQuestion();
     } else {
+        console.log("not hiring");
+
         runningQuestion++;
         renderQuestion();
     }
 
+}
+
+function continueGameHiring(){
+    hiringresult.style.display = "none";
+    runningResumeA += 4;
+    runningResumeB += 4;
+    runningResumeC += 4;
+    runningQuestion++;
+    renderQuestion();
 }
 
 function backToGame(){
@@ -520,7 +665,7 @@ function gameOver(temp){
     gameover.style.display = "block";
     score.innerHTML = changeStatsColor(valuation);
     if (temp == 'time') {
-        reason.innerHTML = "Congrats on surviving 24 weeks!"
+        reason.innerHTML = "Congrats on surviving 10 weeks!"
     } else if (temp == 'worthless') {
         reason.innerHTML = "Your startup is worthless."
     } else if (temp == 'bankrupt') {

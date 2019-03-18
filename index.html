@@ -57,7 +57,7 @@
                 Your company just received a <span style="color: green">$10M</span> investment from angel investors, making the valuation <span style="color: green">$100M</span>.
             </p>
             <p>
-                You plan to do an IPO within <br /><span style="color: red">24 Weeks</span>.
+                Investors want you to do an IPO within <br /><span style="color: red">10 Weeks</span>.
             </p>
             <p>
                 Survive and make your valuation as high as possible!
@@ -134,7 +134,7 @@
                         <div id="employees" class="button">
                             <div class=button-top></div>
                             <div class="button-employee button-middle">
-                                <span class=button-middle-content>Employee: <span id="employeenumber">0</span></span>
+                                <span class=button-middle-content>Executive: <span id="employeenumber">0</span></span>
                             </div>
                             <div class=button-bottom></div>
                         </div>
@@ -180,7 +180,7 @@
 
             </div>
 
-            <div class="buttons">
+            <div id="choicebuttons" class="buttons">
                 <div class="button">
                     <div class=button-top></div>
                     <div id="A" class="button-middle" onclick="renderResult('A')">
@@ -206,6 +206,32 @@
                 </div>
             </div>
 
+            <div id="hiringbuttons" class="buttons" style="display: none">
+                <div class="button">
+                    <div class=button-top></div>
+                    <div id="ah" class="button-middle" onclick="renderHiringResult('A')">
+                        <span class=button-middle-content >Choice A</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div id="bh" class="button-middle" onclick="renderHiringResult('B')">
+                        <span class=button-middle-content>Choice B</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+
+                <div class="button">
+                    <div class=button-top></div>
+                    <div id="ch" class="button-middle" onclick="renderHiringResult('C')">
+                        <span class=button-middle-content>Choice C</span>
+                    </div>
+                    <div class=button-bottom></div>
+                </div>
+            </div>
+
             <div id="result" class="modal" style="display: none">
                 <div id="result-description" class="modal-content">
                   <p>This is what happened.</p>
@@ -220,6 +246,21 @@
               </div>
 
           </div>
+
+          <div id="hiringresult" class="modal" style="display: none">
+              <div id="hiring-result-description" class="modal-content">
+                <p>Someone is hired.</p>
+            </div>
+
+            <div class="buttons-small button">
+                <div class=button-top></div>
+                <div id="hiring-modal-button" class="button-middle">
+                    <span class=button-middle-content>Continue</span>
+                </div>
+                <div class=button-bottom></div>
+            </div>
+
+        </div>
 
           <div id="employeelist" class="modal" style="display: none">
              <div id="employeeoverview" class="modal-content">
