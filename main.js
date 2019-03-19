@@ -98,67 +98,67 @@ let questions = [
 
     },{
         id : 4,
-        question : "4SoftTank wants to invest 500M to acquire most of your shares.",
-        imgSrc : "img/sb.png",
-        choiceA : "Yea! Let's celebrate.",
-        choiceB : "No, I need to keep my ownership.",
-        choiceC : "null",
+        question : "One of your Mexican employees is about to get deported because of the new president's immigration policy.",
+        imgSrc : "img/trump.png",
+        choiceA : "More jobs for AmErIcAns!",
+        choiceB : "Sponsor their H1B visa to help them stay.",
+        choiceC : "(language) Ask them to work remotely to promote your product in Mexico.",
 
         // odds for the result to be good
-        oddsA : 0.7,
-        oddsB : 0.3,
-        oddsC : 0.9,
+        oddsA : 0.1,
+        oddsB : 0.6,
+        oddsC : 0.5,
 
-        resultA : "Your startup grew significantly with this extra cash. <br><br> Valuation + 800M <br> Cash + 200M <br> Morale +5",
+        resultA : "Your startup is named 'USA's future star' by Mr. President. <br><br> @Valuation + 50M <br> Cash + 5M <br> Morale +3@",
         // data [valuation, cash, morale]
-        dataA : [800, 200, 5],
+        dataA : [50, 5, 3],
 
-        resultA_bad : "SoftTank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> Valuation + 100 <br> Cash + 50 <br> Morale - 5",
-        dataA_bad: [100, 50, -5],
+        resultA_bad : "Not much you can do in this situation.<br> <br> %Morale - 5%",
+        dataA_bad: [0, 0, -5],
 
-        resultB : "Things are going well, and your company becomes famous. <br><br> Valuation + 300M <br> Cash + 50M <br> Morale + 5",
-        dataB: [300, 50, 5],
+        resultB : "Alejandro got to stay, and your company is now more attractive to immigrants. <br><br> @Valuation + 30M <br> Morale + 3@",
+        dataB: [30, 0, 3],
 
-        resultB_bad : "SoftTank invested your competitor. <br><br> Valuation - 200M <br> Cash - 10M <br> Morale -3",
-        dataB_bad: [-200, -10, -3],
+        resultB_bad : "Alejandro got to stay but sponsoring H1B came with a cost. <br><br> %Cash - 10M% <br> @Morale + 1@",
+        dataB_bad: [0, -10, 1],
 
-        resultC : "The negotiation is successful. <br><br> Valuation + 100 <br> Cash + 30 <br> Morale + 2",
-        dataC: [100, 30, 2],
+        resultC : "Your product became famous in Mexico! <br><br> @Valuation + 50 <br> Cash + 3 <br> Morale + 2@",
+        dataC: [50, 3, 2],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
+        resultC_bad : "Local competition in Mexico was intense. <br><br> %Morale - 1%",
+        dataC_bad: [0, 0, -1],
     },
     {
         id : 5,
-        question : "5Facehook wants to acquire your core product at 30M.",
-        imgSrc : "img/fb.svg",
-        choiceA : "Let's all join Facehook!",
-        choiceB : "No way! We are better on our own.",
-        choiceC : "(Unlocked: Negotiation) We deserve more.",
+        question : "Your website is banned in China.",
+        imgSrc : "img/china.png",
+        choiceA : "Nevermind.",
+        choiceB : "Make a censored version for Chinese government.",
+        choiceC : "(language) Compliment President Xi in Chinese.",
 
         // odds for the result to be good
         oddsA : 0.2,
-        oddsB : 0.2,
-        oddsC : 0.9,
+        oddsB : 0.5,
+        oddsC : 0.3,
 
-        resultA : "You product has very good synergies with Facehook. <br><br> Valuation + 100M <br> Cash + 30M <br> Morale - 1",
+        resultA : "Freedom matters. <br><br> %Valuation - 10M% <br> @Morale + 1@",
         // data [valuation, cash, morale]
-        dataA : [100, 30, -1],
+        dataA : [-10, 0, +1],
 
-        resultA_bad : "GAME OVER <br> <br> You are asked to step down as the CEO and you no longer have control over your company. <br> Good thing is that you are now pretty wealthy.",
-        dataA_bad: [0, 0, -10],
+        resultA_bad : "Losing 1.5B potential customers is okay. <br><br> %Valuation - 50M <br> Morale - 4%",
+        dataA_bad: [-50, 0, -4],
 
-        resultB : "Facehook's CEO is angry. They created an exact copy of your product. However, customers love your product more. <br><br> Valuation + 50M <br> Cash + 10M <br> Morale + 3",
-        dataB: [50, -10, 3],
+        resultB : "Chinese people love the censored product! <br><br> @Valuation + 150M <br> Cash + 20M <br> Morale + 3@",
+        dataB: [150, +20, 3],
 
-        resultB_bad : "Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 50M <br> Cash - 10M <br> Morale + 1",
-        dataB_bad: [-50, -10, 1],
+        resultB_bad : "Several employees left your company for not agreeing with this. <br><br> @Valuation + 100M <br> Cash + 10M@ <br> %Morale - 5%",
+        dataB_bad: [+100, +10, -5],
 
-        resultC : "The negotiation is successful. <br><br> Valuation + 100 <br> Cash + 30 <br> Morale + 2",
-        dataC: [100, 30, 2],
+        resultC : "Nothing's changed but Chinese people have noticed your company. <br><br> @Valuation + 100M <br> Cash + 10M <br> Morale + 2@",
+        dataC: [100, 10, 2],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
+        resultC_bad : "Nothing's changed really. Your website is still banned. <br><br> %Valuation - 50M <br> Morale - 4%",
+        dataC_bad: [-50, 0, -4],
 
     },{
         id : 6,
