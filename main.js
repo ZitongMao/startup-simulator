@@ -2,9 +2,9 @@
 let questions = [
     {
         id : 1,
-        question : "Facehook wants to acquire your core product at 30M.",
+        question : "Facebook wants to acquire your core product at 30M.",
         imgSrc : "img/fb.svg",
-        choiceA : "Let's all join Facehook!",
+        choiceA : "Let's all join Facebook!",
         choiceB : "No way! We are better on our own.",
         choiceC : "(negotiation) We deserve more.",
 
@@ -13,88 +13,88 @@ let questions = [
         oddsB : 0.2,
         oddsC : 0.9,
 
-        resultA : "You product has very good synergies with Facehook. <br><br> @Valuation + 100M <br> Cash + 30M@ <br> %Morale - 1%",
+        resultA : "You product has very good synergies with Facebook. <br><br> @Valuation + 100M <br> Cash + 30M@ <br> %Morale - 1%",
         // data [valuation, cash, morale]
         dataA : [100, 30, -1],
 
         resultA_bad : "GAME OVER <br> <br> You are asked to step down as the CEO and you no longer have control over your company. <br> Good thing is that you are now pretty wealthy.",
         dataA_bad: [0, 0, -10],
 
-        resultB : "Facehook's CEO is angry. They created an exact copy of your product. However, customers love your product more. <br><br> @Valuation + 50M <br> Cash + 10M <br> Morale + 3@",
+        resultB : "Facebook's CEO is angry. They created an exact copy of your product. However, customers love your product more. <br><br> @Valuation + 50M <br> Cash + 10M <br> Morale + 3@",
         dataB: [50, -10, 3],
 
-        resultB_bad : "Facehook's CEO is angry. They created an exact copy of your product and made all of their users sign up. <br><br> %Valuation - 50M <br> Cash - 10M% <br> @Morale + 1@",
+        resultB_bad : "Facebook's CEO is angry. They created an exact copy of your product and made all of their users sign up. <br><br> %Valuation - 50M <br> Cash - 10M% <br> @Morale + 1@",
         dataB_bad: [-50, -10, 1],
 
         resultC : "The negotiation is successful. <br><br> @Valuation + 100 <br> Cash + 30 <br> Morale + 2@",
         dataC: [100, 30, 2],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> %Valuation - 20M <br> Morale - 1%",
-        dataC_bad: [-20, 0, -1],
+        resultC_bad : "The negotiation is unsuccessful. Facebook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> %Valuation - 30M <br> Morale - 1%",
+        dataC_bad: [-30, 0, -1],
 
     },{
         id : 2,
-        question : "SoftTank wants to invest 500M to acquire most of your shares.",
+        question : "SoftBank wants to invest 500M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
         choiceB : "No, I need to keep my ownership.",
-        choiceC : "null",
+        choiceC : "(negotiation) Emphasize our potential.",
 
         // odds for the result to be good
         oddsA : 0.7,
         oddsB : 0.3,
-        oddsC : 0.9,
+        oddsC : 0.8,
 
         resultA : "Your startup grew significantly with this extra cash. <br><br> @Valuation + 800M <br> Cash + 200M <br> Morale +5@",
         // data [valuation, cash, morale]
-        dataA : [800, 200, 5],
+        dataA : [200, 20, 5],
 
-        resultA_bad : "SoftTank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> @Valuation + 100 <br> Cash + 50@ <br> %Morale - 5%",
-        dataA_bad: [100, 50, -5],
+        resultA_bad : "SoftBank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> @Valuation + 100 <br> Cash + 50@ <br> %Morale - 5%",
+        dataA_bad: [100, 10, -5],
 
         resultB : "Things are going well, and your company becomes famous. <br><br> @Valuation + 300M <br> Cash + 50M <br> Morale + 5@",
-        dataB: [300, 50, 5],
+        dataB: [100, 20, 5],
 
-        resultB_bad : "SoftTank invested your competitor. <br><br> %Valuation - 200M <br> Cash - 10M <br> Morale -3%",
+        resultB_bad : "SoftBank invested your competitor. <br><br> %Valuation - 200M <br> Cash - 10M <br> Morale -3%",
         dataB_bad: [-200, -10, -3],
 
-        resultC : "The negotiation is successful. <br><br> @Valuation + 100 <br> Cash + 30 <br> Morale + 2@",
-        dataC: [100, 30, 2],
+        resultC : "Son Masayoshi agreed that you deserve more. <br><br> @Valuation + 250 <br> Cash + 30 <br> Morale + 2@",
+        dataC: [250, 30, 2],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
+        resultC_bad : "Son Masayoshi decided to invest your competitor. <br><br>  %Valuation - 200M <br> Cash - 10M <br> Morale -3%",
+        dataC_bad: [-200, -10, -3],
     },
     {
         id : 3,
-        question : "3Facehook wants to acquire your core product at 30M.",
-        imgSrc : "img/fb.svg",
-        choiceA : "Let's all join Facehook!",
-        choiceB : "No way! We are better on our own.",
-        choiceC : "(Unlocked: Negotiation) We deserve more.",
+        question : "You just realized that your potential investor's fund came from Saudi Arabia.",
+        imgSrc : "img/arab.jpg",
+        choiceA : "We love Saudi!",
+        choiceB : "No dirty money in our company.",
+        choiceC : "(marketing) Write on Medium about how your business creates positive value for the human kind.",
 
         // odds for the result to be good
-        oddsA : 0.2,
-        oddsB : 0.2,
+        oddsA : 0.6,
+        oddsB : 0.3,
         oddsC : 0.9,
 
-        resultA : "You product has very good synergies with Facehook. <br><br> Valuation + 100M <br> Cash + 30M <br> Morale - 1",
+        resultA : "Money that helps us grow is good money. <br><br> @Valuation + 150M <br> Cash + 20M@ <br> %Morale - 3%",
         // data [valuation, cash, morale]
-        dataA : [100, 30, -1],
+        dataA : [150, 20, -3],
 
-        resultA_bad : "GAME OVER <br> <br> You are asked to step down as the CEO and you no longer have control over your company. <br> Good thing is that you are now pretty wealthy.",
-        dataA_bad: [0, 0, -10],
+        resultA_bad : "Your employees are really against this idea. <br><br> @Valuation + 30M <br> Cash + 5M@ <br> %Morale - 10%",
+        dataA_bad: [30, 5, -10],
 
-        resultB : "Facehook's CEO is angry. They created an exact copy of your product. However, customers love your product more. <br><br> Valuation + 50M <br> Cash + 10M <br> Morale + 3",
-        dataB: [50, -10, 3],
+        resultB : "You know that you are doing the right thing. <br><br> @Morale + 5@",
+        dataB: [0, 0, 5],
 
-        resultB_bad : "Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 50M <br> Cash - 10M <br> Morale + 1",
-        dataB_bad: [-50, -10, 1],
+        resultB_bad : "Your startup is dying but you know that you are doing the right thing. <br><br> %Valuation - 50M <br> Cash - 10M% <br> @Morale + 3@",
+        dataB_bad: [-50, -10, 3],
 
-        resultC : "The negotiation is successful. <br><br> Valuation + 100 <br> Cash + 30 <br> Morale + 2",
-        dataC: [100, 30, 2],
+        resultC : "Dirty money that helps the world is good money.  <br><br> @Valuation + 150 <br> Cash + 20 <br> Morale + 1@",
+        dataC: [150, 20, 1],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
+        resultC_bad : "Customers and employees are still against dirty money. <br><br> %Morale - 10%",
+        dataC_bad: [0, 0, -10],
 
     },{
         id : 4,
@@ -386,8 +386,6 @@ function shuffle(l) {
 
 let question_index = shuffle([...Array(questions.length).keys()]);
 let resume_index = shuffle([...Array(resumes.length).keys()]);
-console.log(question_index);
-console.log(resume_index);
 
 
 // random good or bad result
@@ -404,10 +402,10 @@ function randomResult(odds){
 }
 
 function randomResultLuck(odds){
-    if (skill_list.includes('lucky')){
-        randomResult(odds+0.1)
+    if (skill_list.includes('lucky')) {
+        return randomResult(odds+0.1+morale/100);
     } else {
-        randomResult(odds)
+        return randomResult(odds+morale/100);
     }
 }
 
@@ -560,29 +558,16 @@ function renderHiringResult(choice){
     if (choice === 'A') {
         employee_list.push(r_A.name);
         hiringResultDescription.innerHTML = r_A.name + " joined you!";
-
-        if (r_A.skill.length = 1){
-            skill_list.push(r_A.skill)
-        } else {
-            skill_list = skill_list.concat(r_A.skill)
-        }
+        skill_list = skill_list.concat(r_A.skill)
     } else if (choice === 'B') {
         employee_list.push(r_B.name);
         hiringResultDescription.innerHTML = r_B.name + " joined you!";
-
-        if (r_B.skill.length = 1){
-            skill_list.push(r_B.skill)
-        } else {
-            skill_list = skill_list.concat(r_B.skill)
-        }
-    }  else if (choice === 'C') {
+        skill_list = skill_list.concat(r_B.skill)
+        }  else if (choice === 'C') {
         employee_list.push(r_C.name);
         hiringResultDescription.innerHTML = r_C.name + " joined you!";
-        if (r_C.skill.length = 1){
-            skill_list.push(r_C.skill)
-        } else {
-            skill_list = skill_list.concat(r_C.skill)
-        }
+        skill_list = skill_list.concat(r_C.skill)
+
     }
     renderStats();
 
@@ -632,13 +617,10 @@ function continueGame(){
         gameOver('bankrupt');
     } else if (morale < -20) {
         gameOver('quit')
-    } else if (randomResult(popularity)){
+    } else if (randomResult(popularity) && cash > 50){
         //hiring time
-        console.log("hiring");
         renderHiringQuestion();
     } else {
-        console.log("not hiring");
-
         runningQuestion++;
         renderQuestion();
     }
@@ -679,10 +661,17 @@ function gameOver(temp){
 
 function renderEmployee(){
     employeelist.style.display = "block";
-    count = employee_list.length;
+    var count = employee_list.length;
+    var pool = resumes.length;
     var content = "";
-    for(i = 0; i < count; i++) {
-        content = content + "<br />" + employee_list[i] + ": " + skill_list[i]
+    for (i = 0; i < count; i++) {
+        var current_skill = skill_list[0];
+        for (j = 0; j < pool; j++) {
+            if (employee_list[i] == resumes[j].name){
+                current_skill = resumes[j].skill.toString();
+            }
+        }
+        content = content + "<br />" + employee_list[i] + ": " + current_skill;
     }
     employeeoverview.innerHTML = content;
 }
