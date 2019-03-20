@@ -409,6 +409,11 @@ const modalContinueButtonHiring = document.getElementById("hiring-modal-button")
 const employeeContinueButton = document.getElementById("employee-button");
 const seeEmployeesButton = document.getElementById("employees");
 
+const leaderButton = document.getElementById("start-leader");
+const aboutButton = document.getElementById("start-about");
+const shareButton = document.getElementById("start-share");
+
+
 
 
 // create some variables
@@ -572,6 +577,11 @@ modalContinueButtonHiring.addEventListener("click",continueGameHiring);
 employeeContinueButton.addEventListener("click",backToGame);
 
 seeEmployeesButton.addEventListener("click",renderEmployee);
+
+aboutButton.addEventListener("click",renderAbout);
+leaderButton.addEventListener("click",renderLeader);
+shareButton.addEventListener("click",renderShare);
+
 
 //render a result
 function renderResult(choice){
@@ -769,7 +779,26 @@ function renderEmployee(){
     employeeoverview.innerHTML = content;
 }
 
+function renderAbout(){
+    about.style.display = "block";
+}
+function hideAbout(){
+    about.style.display = "none";
+}
 
+function renderShare(){
+    share.style.display = "block";
+}
+function hideShare(){
+    share.style.display = "none";
+}
+
+function renderLeader(){
+    leader.style.display = "block";
+}
+function hideLeader(){
+    leader.style.display = "none";
+}
 
 // render progress
 function renderProgress(){
