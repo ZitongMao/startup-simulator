@@ -49,7 +49,7 @@ let questions = [
         // data [valuation, cash, morale]
         dataA : [200, 20, 5],
 
-        resultA_bad : "SoftBank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> @Valuation + 100 <br> Cash + 50@ <br> %Morale - 5%",
+        resultA_bad : "SoftBank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> @Valuation + 100M <br> Cash + 10M@ <br> %Morale - 5%",
         dataA_bad: [100, 10, -5],
 
         resultB : "Things are going well, and your company becomes famous. <br><br> @Valuation + 300M <br> Cash + 50M <br> Morale + 5@",
@@ -162,100 +162,165 @@ let questions = [
 
     },{
         id : 6,
-        question : "6SoftTank wants to invest 500M to acquire most of your shares.",
-        imgSrc : "img/sb.png",
-        choiceA : "Yea! Let's celebrate.",
-        choiceB : "No, I need to keep my ownership.",
-        choiceC : "null",
-
-        // odds for the result to be good
-        oddsA : 0.7,
-        oddsB : 0.3,
-        oddsC : 0.9,
-
-        resultA : "Your startup grew significantly with this extra cash. <br><br> Valuation + 800M <br> Cash + 200M <br> Morale +5",
-        // data [valuation, cash, morale]
-        dataA : [800, 200, 5],
-
-        resultA_bad : "SoftTank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> Valuation + 100 <br> Cash + 50 <br> Morale - 5",
-        dataA_bad: [100, 50, -5],
-
-        resultB : "Things are going well, and your company becomes famous. <br><br> Valuation + 300M <br> Cash + 50M <br> Morale + 5",
-        dataB: [300, 50, 5],
-
-        resultB_bad : "SoftTank invested your competitor. <br><br> Valuation - 200M <br> Cash - 10M <br> Morale -3",
-        dataB_bad: [-200, -10, -3],
-
-        resultC : "The negotiation is successful. <br><br> Valuation + 100 <br> Cash + 30 <br> Morale + 2",
-        dataC: [100, 30, 2],
-
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
-    },
-    {
-        id : 7,
-        question : "7Facehook wants to acquire your core product at 30M.",
-        imgSrc : "img/fb.svg",
-        choiceA : "Let's all join Facehook!",
-        choiceB : "No way! We are better on our own.",
-        choiceC : "(Unlocked: Negotiation) We deserve more.",
+        question : "Your co-founder suggests you to issue cryptocurrencies to raise money.",
+        imgSrc : "img/bitcoin.png",
+        choiceA : "UnicornCoin will make us rich!",
+        choiceB : "Cryptocurrency is a scam.",
+        choiceC : "(coding) Utilize blockchain without issuing cryptocurrencies.",
 
         // odds for the result to be good
         oddsA : 0.2,
-        oddsB : 0.2,
-        oddsC : 0.9,
+        oddsB : 0.7,
+        oddsC : 0.7,
 
-        resultA : "You product has very good synergies with Facehook. <br><br> Valuation + 100M <br> Cash + 30M <br> Morale - 1",
+        resultA : "Where did all these free money come from? <br><br> @Valuation + 200M <br> Cash + 20M <br> Morale +5@",
         // data [valuation, cash, morale]
-        dataA : [100, 30, -1],
+        dataA : [200, 20, 5],
 
-        resultA_bad : "GAME OVER <br> <br> You are asked to step down as the CEO and you no longer have control over your company. <br> Good thing is that you are now pretty wealthy.",
-        dataA_bad: [0, 0, -10],
+        resultA_bad : "GAME OVER <br> <br>Your co-founder took the money raised and disappeared. <br> You have to declare bankruptcy to pay the debt.",
+        dataA_bad: [-1000, -200, -10],
 
-        resultB : "Facehook's CEO is angry. They created an exact copy of your product. However, customers love your product more. <br><br> Valuation + 50M <br> Cash + 10M <br> Morale + 3",
-        dataB: [50, -10, 3],
+        resultB : "Yea. <br><br> @Morale + 3@",
+        dataB: [0, 0, 3],
 
-        resultB_bad : "Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 50M <br> Cash - 10M <br> Morale + 1",
-        dataB_bad: [-50, -10, 1],
+        resultB_bad : "Your co-founder left the company in disagreement. <br><br> %Valuation - 100M <br> Morale -3%",
+        dataB_bad: [-100, 0, -3],
 
-        resultC : "The negotiation is successful. <br><br> Valuation + 100 <br> Cash + 30 <br> Morale + 2",
-        dataC: [100, 30, 2],
+        resultC : "VC investors love the word blockchain! <br><br> @Valuation + 100M <br> Cash + 10M <br> Morale + 2@",
+        dataC: [100, 10, 2],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
-
-    },{
-        id : 8,
-        question : "8SoftTank wants to invest 500M to acquire most of your shares.",
-        imgSrc : "img/sb.png",
-        choiceA : "Yea! Let's celebrate.",
-        choiceB : "No, I need to keep my ownership.",
-        choiceC : "null",
+        resultC_bad : "Your engineers focused too much on blockchain and your main product is now incompetent. <br><br> %Valuation - 100M <br> Morale - 2%",
+        dataC_bad: [-100, 0, -2],
+    },
+    {
+        id : 7,
+        question : "UK quit the EU. (Brexit)",
+        imgSrc : "img/uk.png",
+        choiceA : "Okay, but aren't we Americans?",
+        choiceB : "Panicking.",
+        choiceC : "(finance) Hedge Pound Sterling.",
 
         // odds for the result to be good
-        oddsA : 0.7,
+        oddsA : 0.5,
         oddsB : 0.3,
-        oddsC : 0.9,
+        oddsC : 0.7,
 
-        resultA : "Your startup grew significantly with this extra cash. <br><br> Valuation + 800M <br> Cash + 200M <br> Morale +5",
+        resultA : "USA! USA! <br><br> @Morale + 1@",
         // data [valuation, cash, morale]
-        dataA : [800, 200, 5],
+        dataA : [0, 0, +1],
 
-        resultA_bad : "SoftTank asked you to quit all the international markets because they also invested in competitor companies in those countries.<br> <br> Valuation + 100 <br> Cash + 50 <br> Morale - 5",
-        dataA_bad: [100, 50, -5],
+        resultA_bad : "Stock markets in the US collapsed. <br><br> %Valuation - 50M <br> Cash - 10M <br> Morale - 3%",
+        dataA_bad: [-50, -10, -3],
 
-        resultB : "Things are going well, and your company becomes famous. <br><br> Valuation + 300M <br> Cash + 50M <br> Morale + 5",
-        dataB: [300, 50, 5],
+        resultB : "Keep calm and carry on. <br><br> @Morale -1@",
+        dataB: [0, 0, -1],
 
-        resultB_bad : "SoftTank invested your competitor. <br><br> Valuation - 200M <br> Cash - 10M <br> Morale -3",
-        dataB_bad: [-200, -10, -3],
+        resultB_bad : "Stock markets in the US collapsed anyway.<br><br> %Valuation - 50M <br> Cash - 10M <br> Morale - 1%",
+        dataB_bad: [-50, -10, -1],
 
-        resultC : "The negotiation is successful. <br><br> Valuation + 100 <br> Cash + 30 <br> Morale + 2",
-        dataC: [100, 30, 2],
+        resultC : "MBA degree worked. <br><br> @Valuation + 10M <br>Cash + 5M <br> Morale + 2@",
+        dataC: [10, 5, 2],
 
-        resultC_bad : "The negotiation is unsuccessful. Facehook's CEO is angry. They created an exact copy of your product and made all of their users signed up. <br><br> Valuation - 20M <br> Morale - 1",
-        dataC_bad: [-20, 0, -1],
+        resultC_bad : "Getting ready definitely helped. <br><br> %Valuation - 10M <br> Cash - 3M% <br> @Morale + 1@",
+        dataC_bad: [-10, -3, 1],
+
     },
+    {
+        id : 8,
+        question : "Trump started a trade war against China.",
+        imgSrc : "img/tradewar.jpg",
+        choiceA : "Switch to domestic suppliers.",
+        choiceB : "Call your Chinese investors.",
+        choiceC : "(finance) Seek investment opportunities in China.",
+
+        // odds for the result to be good
+        oddsA : 0.1,
+        oddsB : 0.1,
+        oddsC : 0.7,
+
+        resultA : "Domestic suppliers are much more expensive but you feel good supporting USA! <br><br> %Valuation - 100M <br> Cash - 20M% <br> @Morale + 5@",
+        // data [valuation, cash, morale]
+        dataA : [-100, -20, 5],
+
+        resultA_bad : "Domestic suppliers are much more expensive. <br><br> %Valuation - 100M <br> Cash - 20M%",
+        dataA_bad: [-100, -20, 0],
+
+        resultB : "Your Chinese investors had to cancel a planned investment but they offered other ways to help. <br><br> %Valuation - 10M <br> Cash - 2M% <br> @Morale + 3@",
+        dataB: [-10, -2, 3],
+
+        resultB_bad : "Your Chinese investors had to cancel a planned investment. <br><br> %Valuation - 100M <br> Cash - 20M <br> Morale - 3%",
+        dataB_bad: [-100, -20, -3],
+
+        resultC : "Chinese government is surprisingly open to foreign investment during the trade war. <br><br> @Valuation + 100M <br> Morale + 3@",
+        dataC: [100, 0, 3],
+
+        resultC_bad : "Chinese government is surprisingly open to foreign investment during the trade war but the environment is very competitive.",
+        dataC_bad: [0, 0, 0],
+
+    },{
+        id : 9,
+        question : "AWS is down, so is half of the internet world.",
+        imgSrc : "img/amazon.png",
+        choiceA : "Give everyone a day off.",
+        choiceB : "Sue Amazon.",
+        choiceC : "(marketing) Communicate what happened to customers.",
+
+        // odds for the result to be good
+        oddsA : 0.3,
+        oddsB : 0,
+        oddsC : 0.8,
+
+        resultA : "Long live AWS! <br><br> @Morale + 2@",
+        // data [valuation, cash, morale]
+        dataA : [0, 0, 2],
+
+        resultA_bad : "Customers were left in confusion and they could not reach your team. <br><br> %Valuation - 50M <br> Morale - 3%",
+        dataA_bad: [-50, 0, -3],
+
+        resultB : "Amazon decided to give you some credits for future use. <br><br> @Cash + 3M <br> Morale + 3@",
+        dataB: [0, 3, 3],
+
+        resultB_bad : "You are wasting your time. AWS already guaranteed 99.9% uptime. <br><br> %Valuation - 50M <br> Cash - 5M <br> Morale - 3%",
+        dataB_bad: [-50, -5, -3],
+
+        resultC : "You were able to serve your customers through phone. <br><br> @Valuation + 10M <br> Cash + 2M <br> Morale + 2@",
+        dataC: [10, 2, 2],
+
+        resultC_bad : "Customers blamed you instead of AWS. <br><br> %Valuation - 10M <br> Morale - 4%",
+        dataC_bad: [-10, 0, -4],
+
+    },{
+        id : 10,
+        question : "It's time to hire some software engineers.",
+        imgSrc : "img/programmer.jpg",
+        choiceA : "Ask for 8+ years of Swift experience.",
+        choiceB : "Ask for CS degrees from prestigious colleges.",
+        choiceC : "(coding) Test their coding skills.",
+
+        // odds for the result to be good
+        oddsA : 0.1,
+        oddsB : 0.5,
+        oddsC : 0.7,
+
+        resultA : "Clearly Swift is a language that came out 4 years ago but you got some experienced engineers. <br><br> @Valuation + 150M <br> Morale +5@",
+        // data [valuation, cash, morale]
+        dataA : [150, 0, 5],
+
+        resultA_bad : "Clearly Swift is a language that came out 4 years ago. Your company becomes a joke to engineers. <br> <br> %Valuation - 150M <br> Cash - 5M <br> Morale - 5%",
+        dataA_bad: [-150, -5, -5],
+
+        resultB : "You got some of these talents but had to pay them extra salary. <br><br> @Valuation + 100M@ <br> %Cash - 30M%",
+        dataB: [100, -30, 0],
+
+        resultB_bad : "Most of these new grads prefer to go to Google and Facebook. <br><br> Cash - 10M <br> Morale -5%",
+        dataB_bad: [0, -10, -5],
+
+        resultC : "You understand that hiring good engineers is so important for a startup. <br><br> @Valuation + 150M <br> Morale + 3@",
+        dataC: [150, 0, 3],
+
+        resultC_bad : "These applicants spent months reading 'Cracking the coding interview' but could not work on actual projects. <br><br>  %Valuation - 50M <br> Cash - 10M <br> Morale -3%",
+        dataC_bad: [-50, -10, -3],
+    }
 ];
 
 
@@ -613,11 +678,11 @@ function continueGame(){
         gameOver('time');
     } else if (valuation <= 0) {
         gameOver('worthless');
-    } else if (cash+valuation <= 0) {
+    } else if (cash*10+valuation <= 0) {
         gameOver('bankrupt');
     } else if (morale < -20) {
         gameOver('quit')
-    } else if (randomResult(popularity) && cash > 50){
+    } else if (randomResult(popularity) && cash > 10){
         //hiring time
         renderHiringQuestion();
     } else {
