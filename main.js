@@ -45,7 +45,7 @@ let questions = [
         oddsB : 0.3,
         oddsC : 0.8,
 
-        resultA : "Your startup grew significantly with this extra cash. <br><br> @Valuation + 800M <br> Cash + 200M <br> Morale +5@",
+        resultA : "Your startup grew significantly with this extra cash. <br><br> @Valuation + 200M <br> Cash + 20M <br> Morale +5@",
         // data [valuation, cash, morale]
         dataA : [200, 20, 5],
 
@@ -328,7 +328,7 @@ let questions = [
 let resumes = [
     {
         name: "CTO Raymundo",
-        skill: ["coding", "lanaugage"],
+        skill: ["coding", "language"],
     },{
         name: "CTO Zachery",
         skill: "coding",
@@ -337,7 +337,7 @@ let resumes = [
         skill: "coding",
     },{
         name: "CMO Njeri",
-        skill: ["marketing", "lanaugage"],
+        skill: ["marketing", "language"],
     },{
         name: "CMO Christine",
         skill: "marketing",
@@ -346,7 +346,7 @@ let resumes = [
         skill: "marketing",
     },{
         name: "CFO Zitong",
-        skill: ["finance", "lanaugage"],
+        skill: ["finance", "language"],
     },{
         name: "CFO John",
         skill: "finance",
@@ -355,7 +355,7 @@ let resumes = [
         skill: "finance",
     },{
         name: "COO Muhammad",
-        skill: ["negotiation", "lanaugage"],
+        skill: ["negotiation", "language"],
     },{
         name: "COO Ben",
         skill: "negotiation",
@@ -364,7 +364,7 @@ let resumes = [
         skill: "negotiation",
     },{
         name: "Chief Data Scientist Darya",
-        skill: ["lucky", "lanaugage"],
+        skill: ["lucky", "language"],
     },{
         name: "Chief Data Scientist Austin",
         skill: "lucky",
@@ -710,7 +710,8 @@ function continueGame(){
 
     if (resultDescription.innerHTML.slice(0,9) == "GAME OVER"){
         gameOver();
-    } else if (runningQuestion == 10){
+    } else if (runningQuestion == 9){
+        valuation += 1000;
         gameOver('time');
     } else if (valuation <= 0) {
         gameOver('worthless');
@@ -748,15 +749,15 @@ function gameOver(temp){
     gameover.style.display = "block";
     score.innerHTML = changeStatsColor(valuation);
     if (temp == 'time') {
-        reason.innerHTML = "Congrats on surviving 10 weeks!"
+        reason.innerHTML = "Congrats on surviving 10 weeks!";
     } else if (temp == 'worthless') {
-        reason.innerHTML = "Your startup is worthless."
+        reason.innerHTML = "Your startup is worthless.";
     } else if (temp == 'bankrupt') {
-        reason.innerHTML = "You ran out of cash and bankrupted."
+        reason.innerHTML = "You ran out of cash and bankrupted.";
     } else if (temp == 'quit') {
-        reason.innerHTML = "No one wants to work for you anymore."
+        reason.innerHTML = "No one wants to work for you anymore.";
     } else {
-        reason.innerHTML = "Sh*t happens."
+        reason.innerHTML = "Sh*t happens.";
     }
 }
 
