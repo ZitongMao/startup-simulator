@@ -212,7 +212,7 @@ let questions = [
         resultA_bad : "Stock markets in the US collapsed. <br><br> %Valuation - 50M <br> Cash - 10M <br> Morale - 3%",
         dataA_bad: [-50, -10, -3],
 
-        resultB : "Keep calm and carry on. <br><br> @Morale -1@",
+        resultB : "Keep calm and carry on. <br><br> %Morale -1%",
         dataB: [0, 0, -1],
 
         resultB_bad : "Stock markets in the US collapsed anyway.<br><br> %Valuation - 50M <br> Cash - 10M <br> Morale - 1%",
@@ -280,7 +280,7 @@ let questions = [
         resultB : "Amazon decided to give you some credits for future use. <br><br> @Cash + 3M <br> Morale + 3@",
         dataB: [0, 3, 3],
 
-        resultB_bad : "You are wasting your time. AWS already guaranteed 99.9% uptime. <br><br> %Valuation - 50M <br> Cash - 5M <br> Morale - 3%",
+        resultB_bad : "You are wasting your time. AWS already guaranteed 99.9 percent uptime. <br><br> %Valuation - 50M <br> Cash - 5M <br> Morale - 3%",
         dataB_bad: [-50, -5, -3],
 
         resultC : "You were able to serve your customers through phone. <br><br> @Valuation + 10M <br> Cash + 2M <br> Morale + 2@",
@@ -380,6 +380,7 @@ let resumes = [
 // select all elements
 const startButton = document.getElementById("start-button");
 const introductionButton = document.getElementById("introduction-button");
+const restartButton = document.getElementById("restart-button");
 const game = document.getElementById("game");
 const question = document.getElementById("question");
 const qImg = document.getElementById("qImg");
@@ -560,6 +561,9 @@ startButton.addEventListener("click",startIntroduction);
 
 introductionButton.addEventListener("click",startSkill);
 
+restartButton.addEventListener("click",restartGame);
+
+
 modalContinueButton.addEventListener("click",continueGame);
 
 modalContinueButtonHiring.addEventListener("click",continueGameHiring);
@@ -651,6 +655,28 @@ function startSkill(){
     skill.style.display = "block";
 }
 
+function restartGame(){
+    gameover.style.display = "none";
+    start.style.display = "block";
+    valuation = VALUATION_DEFAULT;
+    cash = CASH_DEFAULT;
+    morale = MORALE_DEFAULT;
+    time = TIME_DEFAULT;
+
+    popularity = 0;
+
+    skill_list = [];
+    employee_list = ['Founder'];
+
+    runningQuestion = 0;
+    count = 0;
+    runningResumeA = 0;
+    runningResumeB = runningResumeA + 1;
+    runningResumeC = runningResumeB + 2;
+    question_index = shuffle([...Array(questions.length).keys()]);
+    resume_index = shuffle([...Array(resumes.length).keys()]);
+}
+
 // start game
 function startGame(choose){
     skill_list.push(choose);
@@ -724,6 +750,8 @@ function gameOver(temp){
     }
 }
 
+
+
 function renderEmployee(){
     employeelist.style.display = "block";
     var count = employee_list.length;
@@ -740,6 +768,8 @@ function renderEmployee(){
     }
     employeeoverview.innerHTML = content;
 }
+
+
 
 // render progress
 function renderProgress(){
