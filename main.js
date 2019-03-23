@@ -2,7 +2,7 @@
 let questions = [
     {
         id : 1,
-        question : "Facebook wants to acquire your core product at 30M.",
+        question : "Facebook wants to acquire your core product at DOUBLE the price of your current valuation.",
         imgSrc : "img/fb.svg",
         choiceA : "Let's all join Facebook!",
         choiceB : "No way! We are better on our own.",
@@ -34,7 +34,7 @@ let questions = [
 
     },{
         id : 2,
-        question : "SoftBank wants to invest 500M to acquire most of your shares.",
+        question : "SoftBank wants to invest 200M to acquire most of your shares.",
         imgSrc : "img/sb.png",
         choiceA : "Yea! Let's celebrate.",
         choiceB : "No, I need to keep my ownership.",
@@ -298,7 +298,7 @@ let questions = [
         choiceC : "(coding) Test their coding skills.",
 
         // odds for the result to be good
-        oddsA : 0.1,
+        oddsA : 0.2,
         oddsB : 0.5,
         oddsC : 0.7,
 
@@ -309,10 +309,10 @@ let questions = [
         resultA_bad : "Clearly Swift is a language that came out 4 years ago. Your company becomes a joke to engineers. <br> <br> %Valuation - 150M <br> Cash - 5M <br> Morale - 5%",
         dataA_bad: [-150, -5, -5],
 
-        resultB : "You got some of these talents but had to pay them extra salary. <br><br> @Valuation + 100M@ <br> %Cash - 30M%",
+        resultB : "You got some of these talents but had to pay them extra salary. <br><br> @Valuation + 100M@ <br> %Cash - 15M%",
         dataB: [100, -30, 0],
 
-        resultB_bad : "Most of these new grads prefer to go to Google and Facebook. <br><br> Cash - 10M <br> Morale -5%",
+        resultB_bad : "Most of these new grads prefer to go to Google and Facebook. %<br><br> Cash - 10M <br> Morale -5%",
         dataB_bad: [0, -10, -5],
 
         resultC : "You understand that hiring good engineers is so important for a startup. <br><br> @Valuation + 150M <br> Morale + 3@",
@@ -704,7 +704,7 @@ function startGame(choose){
 function continueGame(){
     result.style.display = "none";
 
-    popularity = 0.1 + valuation / 1000 * 0.2;
+    popularity = 0.15 + valuation / 1000 * 0.5;
 
     // next question
 
