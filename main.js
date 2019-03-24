@@ -328,6 +328,7 @@ let questions = [
 let resumes = [
     {
         name: "CTO Raymundo",
+        //Some employees have multiple skills
         skill: ["coding", "language"],
     },{
         name: "CTO Zachery",
@@ -388,49 +389,33 @@ const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const hidden = document.getElementById("hidden");
-
 const valuationValue = document.getElementById("valuation-value");
 const cashValue = document.getElementById("cash-value");
 const timeValue = document.getElementById("calendar-week-number");
 const moraleValue = document.getElementById("morale-value");
-
 const score = document.getElementById("score");
-
-
 const counter = document.getElementById("counter");
 const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
-
 const resultDescription = document.getElementById("result-description");
 const hiringResultDescription = document.getElementById("hiring-result-description");
 const modalContinueButton = document.getElementById("modal-button");
 const modalContinueButtonHiring = document.getElementById("hiring-modal-button");
 const employeeContinueButton = document.getElementById("employee-button");
 const seeEmployeesButton = document.getElementById("employees");
-
 const leaderButton = document.getElementById("start-leader");
 const aboutButton = document.getElementById("start-about");
 const shareButton = document.getElementById("start-share");
 
-
-
-
 // create some variables
 
-const lastQuestion = questions.length - 1;
-let runningQuestion = 0;
+let runningQuestion = 0; //track current question
 let count = 0;
-const questionTime = 10; // 10s
-const gaugeWidth = 150; // 150px
-const gaugeUnit = gaugeWidth / questionTime;
-let TIMER;
 
-let runningResumeA = 0;
+let runningResumeA = 0; //track the index of current resume
 let runningResumeB = runningResumeA + 1;
 let runningResumeC = runningResumeB + 2;
-
-
 
 // game variables
 
@@ -455,12 +440,12 @@ function shuffle(l) {
     return l;
 }
 
+// randomize the questions and resumes
 let question_index = shuffle([...Array(questions.length).keys()]);
 let resume_index = shuffle([...Array(resumes.length).keys()]);
 
 
 // random good or bad result
-
 function randomResult(odds){
     var x = Math.random();
     if (x < odds) {
@@ -473,6 +458,8 @@ function randomResult(odds){
 }
 
 function randomResultLuck(odds){
+    //every point of morale increases 1%,
+    //while lucky adds 10% chance of good result happening
     if (skill_list.includes('lucky')) {
         return randomResult(odds+0.1+morale/100);
     } else {
@@ -503,7 +490,6 @@ function changeStatsColor(num){
 }
 
 // render starting stats
-
 function renderDefaultStats(){
     valuationValue.innerHTML = VALUATION_DEFAULT;
     cashValue.innerHTML = changeStatsColor(CASH_DEFAULT);
@@ -512,6 +498,7 @@ function renderDefaultStats(){
     employeenumber.innerHTML = employee_list.length;
 }
 
+// render current stats
 function renderStats(){
     valuationValue.innerHTML = valuation;
     cashValue.innerHTML = changeStatsColor(cash);
@@ -520,23 +507,24 @@ function renderStats(){
     employeenumber.innerHTML = employee_list.length;
 }
 
-
 // render a question
 function renderQuestion(){
     hiringbuttons.style.display = "none";
     choicebuttons.style.display = "block";
     hidden.style.display = "none";
+    // current question
     let q = questions[question_index[runningQuestion]];
-
     question.innerHTML = "<p>"+ q.question +"</p>";
     qImg.innerHTML = "<img src="+ q.imgSrc +">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = changeTextColor("&"+q.choiceC+"&");
+    // testing whether the conditions are satisfied for choice C
     if (choiceC.innerText[0] === "(") {
         let regExp = /\(([^)]+)\)/;
+        // getting everything betweem parentheses
         let matches = regExp.exec(choiceC.innerText);
-
+        // only shows choice C when skill requirement is satisfied
         if (skill_list.includes(matches[1])) {
             hidden.style.display = "block";
         } else {
@@ -562,22 +550,14 @@ function renderHiringQuestion() {
 
 }
 
+// connect buttons with functions
 startButton.addEventListener("click",startIntroduction);
-
 introductionButton.addEventListener("click",startSkill);
-
 restartButton.addEventListener("click",restartGame);
-
-
 modalContinueButton.addEventListener("click",continueGame);
-
 modalContinueButtonHiring.addEventListener("click",continueGameHiring);
-
-
 employeeContinueButton.addEventListener("click",backToGame);
-
 seeEmployeesButton.addEventListener("click",renderEmployee);
-
 aboutButton.addEventListener("click",renderAbout);
 leaderButton.addEventListener("click",renderLeader);
 shareButton.addEventListener("click",renderShare);
@@ -683,31 +663,29 @@ function restartGame(){
     runningResumeA = 0;
     runningResumeB = runningResumeA + 1;
     runningResumeC = runningResumeB + 2;
+
+    // re-randomize the index
     question_index = shuffle([...Array(questions.length).keys()]);
     resume_index = shuffle([...Array(resumes.length).keys()]);
 }
 
 // start game
 function startGame(choose){
+    // add default skill to skill list
     skill_list.push(choose);
     skill.style.display = "none";
     renderQuestion();
     game.style.display = "block";
     renderDefaultStats();
-
-
-    // renderProgress();
-    // renderCounter();
-    // TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
+// next question
 function continueGame(){
     result.style.display = "none";
-
+    // chance of getting resumes
     popularity = 0.15 + valuation / 1000 * 0.5;
 
-    // next question
-
+    // game over logics
     if (resultDescription.innerHTML.slice(0,9) == "GAME OVER"){
         gameOver();
     } else if (runningQuestion == 9){
@@ -731,6 +709,7 @@ function continueGame(){
 
 function continueGameHiring(){
     hiringresult.style.display = "none";
+    // make sure that same people do not appear again
     runningResumeA += 4;
     runningResumeB += 4;
     runningResumeC += 4;
@@ -742,7 +721,6 @@ function backToGame(){
     employeelist.style.display = "none";
 
 }
-
 
 function gameOver(temp){
     game.style.display = "none";
@@ -761,13 +739,13 @@ function gameOver(temp){
     }
 }
 
-
-
+// shows a current list of employees and skills
 function renderEmployee(){
     employeelist.style.display = "block";
     var count = employee_list.length;
     var pool = resumes.length;
     var content = "";
+    // loop through current lists
     for (i = 0; i < count; i++) {
         var current_skill = skill_list[0];
         for (j = 0; j < pool; j++) {
@@ -799,11 +777,4 @@ function renderLeader(){
 }
 function hideLeader(){
     leader.style.display = "none";
-}
-
-// render progress
-function renderProgress(){
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-    }
 }
